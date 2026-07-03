@@ -3,7 +3,7 @@ title: "Logan Moray"
 toc: false
 ---
 
-![](images/profile.png){width="220" fig-align="left"}
+![](images/profile.jpg){width="220" fig-align="left"}
 
 Hi, I'm Logan Moray. I'm a Business Marketing student who's been getting into the data side of marketing, and this website is a quick showcase of what I've been learning.
 
