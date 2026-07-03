@@ -20,3 +20,7 @@ format:
     theme: cosmo
     toc: true
     embed-resources: false
+    include-in-header:
+      text: |
+        <meta name="robots" content="noindex, nofollow">
+
