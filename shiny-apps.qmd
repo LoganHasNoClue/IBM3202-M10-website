@@ -1,0 +1,49 @@
+---
+title: "Essay on Shiny Apps"
+---
+
+These are my notes for explaining Shiny to a coworker who's never seen it.
+
+## What is Shiny?
+
+Shiny is an R package for building interactive web apps straight from R, without having to learn web development. Instead of handing someone a static chart, you can hand them an app where they pick the inputs (a dropdown, a slider, a date range) and the outputs (charts, tables, numbers) update on their own.
+
+## How it's built
+
+A Shiny app has two parts:
+
+- **UI (user interface)** - what the person sees: the layout, the input controls, and where the outputs go.
+- **Server** - the R code that does the work. It reads the inputs, runs the calculations, and builds the outputs.
+
+The magic word is **reactivity**. When someone changes an input, Shiny automatically re-runs only the parts of the server that depend on that input and updates the output. You don't have to write a refresh button or manage any of that yourself.
+
+## A tiny example
+
+Here's the shape of a basic app (not run here, since it needs a live server):
+
+```r
+library(shiny)
+
+ui <- fluidPage(
+  sliderInput("n", "Number of points", min = 10, max = 500, value = 100),
+  plotOutput("plot")
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    hist(rnorm(input$n))   # updates whenever the slider moves
+  })
+}
+
+shinyApp(ui, server)
+```
+
+## Why it's useful
+
+- Stakeholders can explore the data themselves instead of asking you for a new chart every time.
+- It's all in R, so you don't need a separate front-end language.
+- Great for dashboards, "what-if" tools, and letting non-coders play with a model.
+
+## The catch
+
+A regular Shiny app needs a **server running R** to work (like shinyapps.io or your own server). The R code runs on that server, not in the user's browser, so someone has to host it and it can cost money as usage grows. That's the main limitation, and it's exactly what Shinylive tries to solve.

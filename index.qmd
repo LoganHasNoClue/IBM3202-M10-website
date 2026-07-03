@@ -1,0 +1,28 @@
+---
+title: "Logan Moray"
+toc: false
+---
+
+![](images/profile.png){width="220" fig-align="left"}
+
+Hi, I'm Logan Moray. I'm a Business Marketing student who's been getting into the data side of marketing, and this website is a quick showcase of what I've been learning.
+
+## Career aspiration
+
+I want to work in marketing analytics, basically the spot where marketing and data meet. My goal is to help a team make decisions based on what the numbers actually say instead of just guessing, whether that's digging into campaign performance, building dashboards people can use, or turning messy data into something a stakeholder can act on.
+
+## Skills
+
+Stuff I've picked up so far:
+
+- R and Quarto for wrangling data and building reports
+- Data visualization with ggplot2
+- A bit of Python
+- Google Analytics 4 (certified)
+- Google BigQuery and Looker Studio (certified)
+- SQL basics and Excel
+
+## Education
+
+- **Cal Poly Pomona** - B.S. in Business Marketing
+- Coursework in data science with R (IBM 3202), covering data wrangling, visualization, and reproducible reporting with Quarto

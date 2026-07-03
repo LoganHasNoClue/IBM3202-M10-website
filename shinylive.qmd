@@ -1,0 +1,36 @@
+---
+title: "Essay on Shiny Live"
+---
+
+Notes for explaining Shinylive to a coworker, and how it's different from a normal Shiny app.
+
+## What is Shinylive?
+
+Shinylive is a way to run a Shiny app **without a server**. Normally Shiny needs R running on a server somewhere. Shinylive instead runs R right inside the person's web browser using WebAssembly (a thing called webR). So the whole app is just static files - HTML, JS, and the wasm stuff - that you can drop on any plain web host.
+
+## How it's different from a regular Shiny app
+
+| | Regular Shiny | Shinylive |
+|------------------|---------------------------|---------------------------|
+| Where R runs | On a server | In the user's browser |
+| Hosting | Needs a live R server (shinyapps.io, etc.) | Any static host (GitHub Pages, Netlify, Quarto Pub) |
+| Cost | Can cost money as traffic grows | Basically free to host |
+| Setup | Server has to be maintained | Just static files |
+
+## Pros of Shinylive
+
+- No server to run or pay for - you can host it for free on something like GitHub Pages.
+- Nothing to maintain on the back end.
+- Each user runs their own copy in their browser, so it scales without you doing anything.
+- Works well embedded inside a Quarto document or website.
+
+## Cons of Shinylive
+
+- The first load is slow because the browser has to download R/webR and the packages.
+- It's limited to packages that have been built for webR, so not everything works.
+- The user's data stays on their machine, which is private but means it can't talk to a central database.
+- Heavy computations run on the user's laptop, so it can be slow for big jobs.
+
+## My take
+
+For a small, shareable app that you just want people to click on, Shinylive is great because it's free and easy to host. For something bigger that needs a database, heavy computing, or lots of packages, a regular server-based Shiny app is still the better call.

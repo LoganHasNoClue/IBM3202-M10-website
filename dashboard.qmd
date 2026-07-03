@@ -1,0 +1,50 @@
+---
+title: "Penguins Dashboard"
+format: dashboard
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Row
+
+```{r}
+#| content: valuebox
+#| title: "Total penguins"
+list(icon = "clipboard-data", color = "primary",
+     value = nrow(penguins))
+```
+
+```{r}
+#| content: valuebox
+#| title: "Species"
+list(icon = "tags", color = "info",
+     value = n_distinct(penguins$species))
+```
+
+```{r}
+#| content: valuebox
+#| title: "Avg body mass (g)"
+list(icon = "speedometer", color = "success",
+     value = round(mean(penguins$body_mass_g, na.rm = TRUE)))
+```
+
+## Row
+
+```{r}
+#| title: "Body mass by species"
+ggplot(penguins, aes(x = species, y = body_mass_g, fill = species)) +
+  geom_boxplot(show.legend = FALSE) +
+  labs(x = "Species", y = "Body mass (g)")
+```
+
+```{r}
+#| title: "Bill length vs depth"
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point(alpha = 0.7) +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)", color = "Species")
+```
